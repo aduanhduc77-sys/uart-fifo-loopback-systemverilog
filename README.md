@@ -25,7 +25,7 @@ The design receives serial data through the UART RX interface, stores the receiv
 - `rtl/uart_fifo_loopback.sv`
 - `tb/tb_uart_fifo_loopback.sv`
 - `run_iverilog.ps1`
-
+```markdown
 ## Run
 
 Run the simulation from the project directory:
@@ -38,6 +38,7 @@ PASS byte 1: expected=a3 got=a3
 PASS byte 2: expected=00 got=00
 PASS byte 3: expected=ff got=ff
 PASS: UART FIFO loopback
+
 ## Next Improvements
 
 - Add parity.
