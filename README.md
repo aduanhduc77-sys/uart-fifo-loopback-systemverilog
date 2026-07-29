@@ -1,22 +1,21 @@
-# Project 1: UART FIFO Loopback
+# UART FIFO Loopback
 
 ## Goal
 
-Build a small communication subsystem:
+Build a small UART communication subsystem:
 
-`UART RX -> RX FIFO -> UART TX`
+`UART RX -> Synchronous FIFO -> UART TX`
 
-The testbench sends bytes into the RX line, waits for loopback transmission, and checks that the output bytes match.
+The design receives serial data through the UART RX interface, stores the received bytes in a synchronous FIFO, and transmits them back through UART TX.
 
-## Why this helps
+## Features
 
-This project demonstrates core junior FPGA skills:
-
-- FSM design
+- UART receiver implemented using an FSM
+- UART transmitter implemented using an FSM
+- Synchronous FIFO buffering
 - Serial protocol timing
-- FIFO buffering
-- Backpressure thinking
-- Self-checking testbench
+- Back-to-back byte handling
+- Self-checking SystemVerilog testbench
 
 ## Files
 
@@ -29,16 +28,24 @@ This project demonstrates core junior FPGA skills:
 
 ## Run
 
+Run the simulation from the project directory:
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run_iverilog.ps1
-```
-
-Expected result: simulation prints `PASS`.
-
+Expected result: 
+PASS byte 0: expected=55 got=55
+PASS byte 1: expected=a3 got=a3
+PASS byte 2: expected=00 got=00
+PASS byte 3: expected=ff got=ff
+PASS: UART FIFO loopback
 ## Next Improvements
 
 - Add parity.
 - Add framing error detection.
 - Add AXI-Stream style interface around the UART.
 - Synthesize in Vivado and add a timing/utilization report.
+## Simulation Result
 
+The self-checking testbench sends four UART bytes through the RX interface, buffers them in the synchronous FIFO, and verifies the transmitted loopback data.
+
+![Simulation result](simulation_result.png)
