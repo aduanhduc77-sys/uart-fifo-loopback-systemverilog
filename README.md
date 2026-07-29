@@ -32,12 +32,17 @@ Run the simulation from the project directory:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run_iverilog.ps1
-Expected result: 
+```
+
+Expected result:
+
+```text
 PASS byte 0: expected=55 got=55
 PASS byte 1: expected=a3 got=a3
 PASS byte 2: expected=00 got=00
 PASS byte 3: expected=ff got=ff
 PASS: UART FIFO loopback
+```
 
 ## Next Improvements
 
@@ -45,6 +50,7 @@ PASS: UART FIFO loopback
 - Add framing error detection.
 - Add AXI-Stream style interface around the UART.
 - Synthesize in Vivado and add a timing/utilization report.
+
 ## Simulation Result
 
 The self-checking testbench sends four UART bytes through the RX interface, buffers them in the synchronous FIFO, and verifies the transmitted loopback data.
