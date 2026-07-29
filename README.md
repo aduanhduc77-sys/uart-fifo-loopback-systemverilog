@@ -15,7 +15,6 @@ The design receives serial data through the UART RX interface, stores the receiv
 - Synchronous FIFO buffering
 - Serial protocol timing
 - Back-to-back byte handling
-- Self-checking SystemVerilog testbench
 
 ## Files
 
@@ -25,6 +24,7 @@ The design receives serial data through the UART RX interface, stores the receiv
 - `rtl/uart_fifo_loopback.sv`
 - `tb/tb_uart_fifo_loopback.sv`
 - `run_iverilog.ps1`
+
 ```markdown
 ## Run
 
@@ -49,4 +49,4 @@ PASS: UART FIFO loopback
 
 The self-checking testbench sends four UART bytes through the RX interface, buffers them in the synchronous FIFO, and verifies the transmitted loopback data.
 
-![Simulation result](simulation_result.png)
+![Simulation result](simulation_result.png.png)
